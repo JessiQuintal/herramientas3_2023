@@ -6,6 +6,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import accessApi as servicio
 
 
 df = px.data.gapminder()
@@ -30,13 +31,20 @@ datosPais = df.query("country == '" + pais+"'")
 fig = px.bar(datosPais, x='year', y='pop')
 st.plotly_chart(fig, use_container_width=True)
 
+
+
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+valor = st.slider('Elige el rango de años a analizar', 1950, 2010, 1990)
+st.write("Elegiste: ", valor)
+
+datosFiltrados= datosPais[datosPais['year'] == valor ]
+st.dataframe(datosFiltrados)
+
+if st.button('Llamar servicio'):
+    result= servicio.llamarservicio()
+    st.write('Resultado', result )
