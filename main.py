@@ -33,7 +33,7 @@ st.write('El formulario consta de 16 campos, se deben llenar todos los campos y 
 col1, col2, col3= st.columns(3)
 with st.form("my_form", clear_on_submit=True):
    with col1:
-      age= st.number_input("Edad")
+      age= st.text_input("Edad")
       job = st.selectbox('Job:',(listaJobs))
       marital = st.selectbox('Estado civil:', (listaMarital))
       education = st.selectbox('Nivel de educación',(listaEdu))
@@ -43,10 +43,10 @@ with st.form("my_form", clear_on_submit=True):
    with col2:
       contact = st.selectbox('Contact',(listaContact))
       month = st.selectbox('Month', ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'])
-      duration = st.number_input("Duration 0-4918")
-      campaign = st.number_input("Campaign 0-56")
-      pdays = st.number_input("Pdays 0-999")
-      previous = st.number_input("Previous 1-7")
+      duration = st.text_input("Duration 0-4918")
+      campaign = st.text_input("Campaign 0-56")
+      pdays = st.text_input("Pdays 0-999")
+      previous = st.text_input("Previous 1-7")
    with col3:
       poutcome = st.selectbox('Poutcome', (listaPout))
       emp = st.slider('Emp.var.rate', min(listaEmp), max(listaEmp))
