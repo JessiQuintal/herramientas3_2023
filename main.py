@@ -4,6 +4,32 @@ import streamlit as st
 import pandas as pd
 import accessApi as servicio
 import json
+import pickle
+
+model = pickle.load(open("/content/drive/MyDrive/HerramientasIII/model.pkl", "rb"))
+
+data={
+    "age": 25,
+            "job": "unknown",
+            "marital": "single",
+            "education": "high.school",
+            "default": "yes",
+            "housing": "yes",
+            "loan": "yes",
+            "contact": "cellular",
+            "month": "jan",
+            "duration": 4900,
+            "campaign": 50,
+            "pdays": 999,
+            "previous": 6,
+            "poutcome": "nonexistent",
+            "emp.var.rate": 1,
+            "cons.price.idx": 93,
+            "nr.employed": 5030
+}
+
+df = pd.json_normalize(data)
+st.write(model.predict(df))
 
 #Agregamos el archivo csv y agregamos cada columna a una lista
 #Con unique() me aseguro que sea únicamente un elemento sin repetirse
